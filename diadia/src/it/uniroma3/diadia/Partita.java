@@ -26,8 +26,7 @@ public class Partita {
 		this.facolta = new Labirinto();
 		this.finita = false;
 //		this.cfu = CFU_INIZIALI;
-//		this.stanzaCorrente=labirinto.getIngresso();
-		
+		this.stanzaCorrente=this.facolta.getIngresso();
 		this.studente = new Giocatore();
 	}
 
@@ -56,13 +55,15 @@ public class Partita {
 	}
 
 	/**
-	 * Imposta la partita come finita
-	 *
+	 * setFinita() imposta lo stato della partita come partita finita
 	 */
 	public void setFinita() {
 		this.finita = true;
 	}
-
+	
+	public Labirinto getLabirinto(){
+		return this.facolta;
+	}
 //	public int getCfu() {
 //		return this.cfu;
 //	}

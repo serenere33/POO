@@ -21,7 +21,8 @@ public class Giocatore {
 	 * inizializza una borsa e i CFU*/
 	public Giocatore() {
 		// TODO Auto-generated constructor stub
-	
+		this.cfu=CFU_INIZIALI;
+		
 	}
 
 	/**
