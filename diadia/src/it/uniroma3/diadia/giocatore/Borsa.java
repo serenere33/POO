@@ -55,10 +55,16 @@ public class Borsa {
 	  return this.getAttrezzo(nomeAttrezzo)!=null; 
 	 } 
 	 
-	 
+	 /*CONTROLLARE metodo remove: se rimuovo un oggetto 
+	  * intermedio dall'array di attrezzi, la locazione
+	  * diventa vuota, ma nel metodo di aggiunta non c'è
+	  * alcun controllo sulle posizioni vuote e gli 
+	  * attrezzi vengono messi automaticamente alla fine.
+	  * Questo vuol dire che se ho tolto un oggetto alla 
+	  * posizione 4 e avevo 9 oggetti, se ne aggiungo uno,
+	  * si genera un'eccezione.*/
 	 public Attrezzo removeAttrezzo(String nomeAttrezzo) { 
 	  Attrezzo a = null; 
-	  // --->  TODO (implementare questo metodo) <--- 
 	  for(int i=0; i<this.numeroAttrezzi; i++){
 		  if(this.attrezzi[i].equals(nomeAttrezzo)){
 			  a=this.attrezzi[i];
