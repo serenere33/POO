@@ -42,8 +42,6 @@ public class Attrezzo {
    public int getPeso() {
       return this.peso;
    }
-   
-
 
    /**
 	* Restituisce una rappresentazione stringa di questo attrezzo

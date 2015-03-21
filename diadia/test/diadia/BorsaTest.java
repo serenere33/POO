@@ -9,9 +9,7 @@ import it.uniroma3.diadia.attrezzi.*;
 
 public class BorsaTest {
 private Borsa B1;
-private Attrezzo martello;
-private Attrezzo cacciavite;
-private Attrezzo trapano;
+private Attrezzo martello, cacciavite, trapano;
 
 	@Before
 	public void setUp(){

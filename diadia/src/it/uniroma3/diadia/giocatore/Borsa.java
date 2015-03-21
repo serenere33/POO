@@ -1,6 +1,16 @@
 package it.uniroma3.diadia.giocatore;
 
+import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+
+/**
+ * Questa classe implementa una borsa che contiene tutti
+ * gli attrezzi del giocatore presi durante il gioco.
+ *  
+ *  @author Valerio Dodet & Serena Sensini
+ *  @see Attrezzi
+ *  @version 0.1
+ *  */
 
 public class Borsa { 
 	 public final static int DEFAULT_PESO_MAX_BORSA = 10; 

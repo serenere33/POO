@@ -19,6 +19,10 @@ Labirinto L1;
 	/*SetUp non necessario*/
 
 	@Test
+	
+	/*Inizializza un labirinto e verifica che le stanze
+	 * di ingresso e di uscita siano state inizializzate.*/
+	
 	public void test() {
 		L1 = new Labirinto();
 		assertEquals("Atrio", L1.getIngresso().getNome());

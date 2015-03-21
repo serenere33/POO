@@ -135,19 +135,19 @@ public class Stanza {
     	return s;
     }
 
-    /**
-	* Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
-	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
-	*/
-	public boolean hasAttrezzo(String nomeAttrezzo) {
-		boolean trovato;
-		trovato = false;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
-		}
-		return trovato;
-	}
+//    /**
+//	* Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
+//	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
+//	*/
+//	public boolean hasAttrezzo(String nomeAttrezzo) {
+//		boolean trovato;
+//		trovato = false;
+//		for (Attrezzo attrezzo : this.attrezzi) {
+//			if (attrezzo.getNome().equals(nomeAttrezzo))
+//				trovato = true;
+//		}
+//		return trovato;
+//	}
 
 	/**
      * Restituisce l'attrezzo nomeAttrezzo se presente nella stanza.
@@ -155,25 +155,25 @@ public class Stanza {
 	 * @return l'attrezzo presente nella stanza.
      * 		   null se l'attrezzo non e' presente.
 	 */
-	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-		Attrezzo attrezzoCercato;
-		attrezzoCercato = null;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				attrezzoCercato = attrezzo;
-		}
-		return attrezzoCercato;	
-	}
+//	public Attrezzo getAttrezzo(String nomeAttrezzo) {
+//		Attrezzo attrezzoCercato;
+//		attrezzoCercato = null;
+//		for (Attrezzo attrezzo : this.attrezzi) {
+//			if (attrezzo.getNome().equals(nomeAttrezzo))
+//				attrezzoCercato = attrezzo;
+//		}
+//		return attrezzoCercato;	
+//	}
 
 	/**
 	 * Rimuove un attrezzo dalla stanza (ricerca in base al nome).
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		// da implementare
-		return false;
-	}
+//	public boolean removeAttrezzo(Attrezzo attrezzo) {
+//		// da implementare
+//		return false;
+//	}
 
 
 	public String[] getDirezioni() {
@@ -183,4 +183,5 @@ public class Stanza {
 	    return direzioni;
     }
 
+	
 }
