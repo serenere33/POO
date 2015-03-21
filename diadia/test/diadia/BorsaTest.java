@@ -30,9 +30,15 @@ private Attrezzo martello, cacciavite, trapano;
 	 * da 10, quindi il terzo non potrà essere aggiunto
 	 * a causa del peso massimo della borsa.*/
 	
-	public void testAddAttrezzo() {
+	public void testAddAttrezzoMartello() {
 		assertEquals(true, B1.addAttrezzo(martello));
+	}
+	
+	public void testAddAttrezzoTrapano() {
 		assertEquals(true, B1.addAttrezzo(trapano));
+	}
+	
+	public void testAddAttrezzoCacciavite() {
 		assertEquals(false, B1.addAttrezzo(cacciavite));
 	}
 	
@@ -40,28 +46,39 @@ private Attrezzo martello, cacciavite, trapano;
 	 * aggiunti prima e provo con un attrezzo non presente,
 	 * per verifica che il controllo avvenga correttamente.*/
 	
-	public void testHasAttrezzo(){
+	public void testHasAttrezzoMartello(){
 		assertEquals(true, B1.hasAttrezzo("martello"));
+	}
+	
+	public void testHasAttrezzoCric(){
 		assertEquals(false, B1.hasAttrezzo("cric"));
 	}
+	
 	/*Se presenti, restituisco degli attrezzi presi dalla 
 	 * borsa.*/
 	
-	public void testGetAttrezzo(){
+	public void testGetAttrezzoTrapano(){
 		assertEquals(trapano, B1.getAttrezzo("trapano"));
+	}
+	
+	public void testGetAttrezzoAccetta(){
 		assertEquals(null, B1.getAttrezzo("accetta"));
 	}
+	
 	/*Rimuovo un oggetto dalla borsa che è presente, e provo
 	 * con uno che non ho aggiunto per verifica che il 
 	 * controllo avvenga correttamente.*/
 	
-	public void testRemoveAttrezzo(){
+	public void testRemoveAttrezzoMartello(){
 		assertEquals(martello, B1.removeAttrezzo("martello"));
+	}
+	
+	public void testRemoveAttrezzoPinze(){
 		assertEquals(null, B1.removeAttrezzo("pinze"));
 	}
 	
-/*non necessario*/
-//	public void testGetPeso(){
-//		
-//	}
+///*non necessario*/
+////	public void testGetPeso(){
+////		
+////	}
 }
