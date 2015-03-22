@@ -64,14 +64,7 @@ public class Borsa {
 	  return this.getAttrezzo(nomeAttrezzo)!=null; 
 	 } 
 	 
-	 /*CONTROLLARE metodo remove: se rimuovo un oggetto 
-	  * intermedio dall'array di attrezzi, la locazione
-	  * diventa vuota, ma nel metodo di aggiunta non c'è
-	  * alcun controllo sulle posizioni vuote e gli 
-	  * attrezzi vengono messi automaticamente alla fine.
-	  * Questo vuol dire che se ho tolto un oggetto alla 
-	  * posizione 4 e avevo 9 oggetti, se ne aggiungo uno,
-	  * si genera un'eccezione.*/
+	 
 	 public Attrezzo removeAttrezzo(String nomeAttrezzo) { 
 	  Attrezzo a = null; 
 	  for(int i=0; i<this.numeroAttrezzi; i++){
@@ -79,10 +72,24 @@ public class Borsa {
 			  a=this.attrezzi[i];
 			  this.attrezzi[i]=null;
 			  this.numeroAttrezzi--;
+			  
+			  //verifica di consistenza della borsa
+			  if(i<this.numeroAttrezzi)
+				  aggiornaBorsa(i);
 		  }
 	  }
 	  return a; 
 	 } 
+	 
+	 /**
+	  * aggiornaBorsa() sistema l'ultimo attrezzo disponibile nella
+	  * posizione dell'array da cui ne è stato tolto uno
+	  * @param int posizione vuota
+	  * */
+	 private void aggiornaBorsa(int vuoto){
+		 this.attrezzi[vuoto]=this.attrezzi[this.numeroAttrezzi];
+		 this.attrezzi[this.numeroAttrezzi]=null;
+	 }
 	 
 	 public String toString() { 
 	  StringBuilder s = new StringBuilder(); 

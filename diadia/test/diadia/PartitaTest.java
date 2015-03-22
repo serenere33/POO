@@ -1,6 +1,3 @@
-/**
- * 
- */
 package diadia;
 
 import static org.junit.Assert.*;
@@ -14,6 +11,7 @@ import org.junit.Test;
  * @author Serena Sensini & Valerio Dodet
  *
  */
+
 public class PartitaTest {
 	Partita PartitaTest;
 	Stanza StanzaTest;

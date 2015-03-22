@@ -155,25 +155,34 @@ public class Stanza {
 	 * @return l'attrezzo presente nella stanza.
      * 		   null se l'attrezzo non e' presente.
 	 */
-//	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-//		Attrezzo attrezzoCercato;
-//		attrezzoCercato = null;
-//		for (Attrezzo attrezzo : this.attrezzi) {
-//			if (attrezzo.getNome().equals(nomeAttrezzo))
-//				attrezzoCercato = attrezzo;
-//		}
-//		return attrezzoCercato;	
-//	}
+	public Attrezzo getAttrezzo(String nomeAttrezzo) {
+		Attrezzo attrezzoCercato;
+		attrezzoCercato = null;
+		for (Attrezzo attrezzo : this.attrezzi) {
+			if (attrezzo != null && attrezzo.getNome().equals(nomeAttrezzo))
+				attrezzoCercato = attrezzo;
+		}
+		return attrezzoCercato;	
+	}
 
 	/**
 	 * Rimuove un attrezzo dalla stanza (ricerca in base al nome).
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-//	public boolean removeAttrezzo(Attrezzo attrezzo) {
-//		// da implementare
-//		return false;
-//	}
+	public boolean removeAttrezzo(String attrezzo) {
+		boolean rimosso = false;
+		for (int i = 0; i < this.numeroAttrezzi;i++){
+			if(rimosso){
+				this.attrezzi[i--] = this.attrezzi[i];}
+			if(this.attrezzi[i].getNome().equals(attrezzo) && !rimosso){
+				this.attrezzi[i] = null;
+				rimosso = true;
+			}
+		}
+		if(rimosso) numeroAttrezzi--;
+		return rimosso;
+	}
 
 
 	public String[] getDirezioni() {

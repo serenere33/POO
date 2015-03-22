@@ -19,13 +19,11 @@ public class Partita {
 	private Labirinto facolta;
 	private boolean finita;
 	public Giocatore studente;
-//	private int cfu;
-//	private static int CFU_INIZIALI = 20;
+
 	
 	public Partita(){
 		this.facolta = new Labirinto();
 		this.finita = false;
-//		this.cfu = CFU_INIZIALI;
 		this.stanzaCorrente=this.facolta.getIngresso();
 		this.studente = new Giocatore();
 	}
@@ -63,12 +61,9 @@ public class Partita {
 	
 	public Labirinto getLabirinto(){
 		return this.facolta;
+	}	
+	
+	public Giocatore getGiocatore(){
+		return this.studente;
 	}
-//	public int getCfu() {
-//		return this.cfu;
-//	}
-//
-//	public void setCfu(int cfu) {
-//		this.cfu = cfu;		
-//	}	
 }

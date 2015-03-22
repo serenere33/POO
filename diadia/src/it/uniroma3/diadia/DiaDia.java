@@ -1,7 +1,8 @@
 package it.uniroma3.diadia;
 
 import it.uniroma3.diadia.ambienti.Stanza;
-
+import it.uniroma3.diadia.attrezzi.*;
+import it.uniroma3.diadia.giocatore.*;
 import java.util.Scanner;
 
 /**
@@ -25,7 +26,7 @@ public class DiaDia {
 		"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
 		"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 		"Per conoscere le istruzioni usa il comando 'aiuto'.";
-    private static String[] elencoComandi = {"vai", "aiuto", "fine"};
+    private static String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
 
     public DiaDia() {
     	this.partita = new Partita();
@@ -54,17 +55,27 @@ public class DiaDia {
 		if (comandoDaEseguire.getNome().equals("fine")) {
 			this.fine(); 
 			return true;
-		} else if (comandoDaEseguire.getNome().equals("vai"))
+		} 
+		else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro());
+		
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		
+		/*aggiungo comando Posa e Prendi*/
+		else if(comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
+		
+		else if(comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
+		
 		else
 			System.out.println("Comando sconosciuto");
+		
 		if (this.partita.vinta()) {
 			System.out.println("Hai vinto!");
 			return true;
-		} else
-			return false;
+		} else return false;
 	}   
     
     // implementazioni dei comandi dell'utente:
@@ -103,10 +114,39 @@ public class DiaDia {
     private void fine() {
     	System.out.println("Grazie di aver giocato!");  // si desidera smettere
     }
+
+    	/**
+    	 * prende un attrezzo dalla stanza e lo aggiunge nello zaino
+    	 * @param nome dell'Attrezzo da prendere
+    	 */
+    	private void prendi(String nomeAttrezzo){
+    		Stanza currentStanza = this.partita.getStanzaCorrente();
+    		Borsa marsupio = this.partita.getGiocatore().getBorsa();
+    		Attrezzo daPrendere = currentStanza.getAttrezzo(nomeAttrezzo);
+    		if(daPrendere != null){
+    			if(marsupio.addAttrezzo(daPrendere)){
+    				currentStanza.removeAttrezzo(nomeAttrezzo);
+    				System.out.println("L'attrezzo " + nomeAttrezzo +" si trova nel marsupio");
+    			}
+    			else
+    				System.out.println("Non c'è abbastanza spazio per questo attrezzo!");
+    		}
+    		else
+    			System.out.println("Non esiste nessun attrezzo " + nomeAttrezzo + " in questa stanza!");	
+   }
     
-    private void prendi(){}
-    
-    private void posa(){}
+    private void posa(String attrezzo){
+    	Stanza currentStanza = this.partita.getStanzaCorrente();
+    	Borsa marsupio = this.partita.getGiocatore().getBorsa();
+    	Attrezzo daPosare = marsupio.getAttrezzo(attrezzo);
+    	if(daPosare != null){
+    		currentStanza.addAttrezzo(daPosare);
+    		marsupio.removeAttrezzo(attrezzo);
+    		System.out.println("L'attrezzo " + attrezzo + " è nella stanza");
+    	}else{
+    		System.out.println("Non esiste un attrezzo " + daPosare + " nel tuo marsupio.");
+    	}
+    }
 
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();

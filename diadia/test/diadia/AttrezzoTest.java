@@ -1,19 +1,41 @@
 package diadia;
+/**
+ * 
+ * @author Serena Sensini & Valerio Dodet
+ *
+ */
 
+import static org.junit.Assert.*;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class AttrezzoTest {
+import org.junit.Before;
+import org.junit.Test;
 
-	public static void main(String[] argc){
-		Attrezzo scudo=new Attrezzo("scudo",6);
-		Attrezzo cacciavite=new Attrezzo("cacciavitone",12);
-		System.out.println("scudo e cacciavite istanziati");
-		System.out.println(scudo.toString()+" == scudo (6kg) ");
-		System.out.println(cacciavite.toString()+" == cacciavitone (12kg)");
-		System.out.println("carico trasportato: "+(scudo.getPeso()+cacciavite.getPeso())+"kg == 18kg");
-		if(scudo.getPeso()>cacciavite.getPeso())	System.out.println(scudo.getNome());
-		else	System.out.println(cacciavite.getNome());
+import it.uniroma3.diadia.attrezzi.*;
+
+public class AttrezzoTest {
+	
+	private Attrezzo cacciavite, martello;
+	
+	@Before
+	public void setUp(){
+		cacciavite = new Attrezzo("cacciavite", 1);
+		martello = new Attrezzo("martello", 1);
+	}
+	
+	@Test
+	public void testGetPesoCacciavite() {
+		assertEquals(1, cacciavite.getPeso());
 	}
 
+	
+	@Test
+	public void testGetNome(){
+		assertEquals("martello", martello.getNome());
+	}
+	
+	@Test
+	public void testToString(){
+		assertEquals("martello (1kg)", martello.toString());		
+	}
 }
-

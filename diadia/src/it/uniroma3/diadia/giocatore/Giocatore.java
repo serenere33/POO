@@ -22,14 +22,26 @@ public class Giocatore {
 	public Giocatore() {
 		// TODO Auto-generated constructor stub
 		this.cfu=CFU_INIZIALI;
+		this.marsupio=new Borsa();
 		
 	}
 
 	/**
-	 * Setter e Getter dei parametri + toString()
+	 * Setter e Getter dei parametri
 	 * */
 	public int getCfu() {
 		return this.cfu;
+	}
+	public Borsa getBorsa(){
+		return this.marsupio;
+	}
+
+	/**
+	 * setBorsa() permette di cambiare la Borsa
+	 * @param Borsa
+	 * @see Borsa*/
+	public void setBorsa(Borsa nuova) {
+		this.marsupio=nuova;
 	}
 
 	public void setCfu(int cfu) {
