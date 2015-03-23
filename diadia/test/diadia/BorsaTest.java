@@ -9,14 +9,20 @@ import it.uniroma3.diadia.attrezzi.*;
 
 public class BorsaTest {
 private Borsa B1;
-private Attrezzo martello, cacciavite, trapano;
+private Attrezzo martello, cacciavite/*, trapano*/;
 
+
+/**@Test va prima di ogni metodo di test, altrimenti non lo esegue.
+ * esistono molte asserzioni diverse da poter usare, praticamente una per ogni caso.
+*Inoltre sarebbe meglio scrivere una stringa di errore nel caso il test fallisse descrivendo
+* il caso testato o dei riferimenti per localizzare il bug
+* */
 	@Before
 	public void setUp(){
-		martello = new Attrezzo("martello", 3);
-		cacciavite = new Attrezzo("cacciavite", 1);
-		trapano = new Attrezzo("trapano", 7);
-		B1 = new Borsa();
+		martello = new Attrezzo("martello", 10);
+		cacciavite = new Attrezzo("cacciavite", 20);
+//		trapano = new Attrezzo("trapano", 7);
+		B1 = new Borsa(10);
 	}
 
 	@Test
@@ -24,61 +30,70 @@ private Attrezzo martello, cacciavite, trapano;
 	/*Verifico che la borsa sia vuota.*/
 	
 	public void testIsEmpty(){
-		assertEquals(true, B1.isEmpty());
+		assertTrue("errore Borsa.numeroAttrezzi",B1.isEmpty());
 	}
 	/*Aggiungo tre attrezzi: la somma dei pesi dei primi due
 	 * da 10, quindi il terzo non potrà essere aggiunto
 	 * a causa del peso massimo della borsa.*/
 	
+	@Test
 	public void testAddAttrezzoMartello() {
-		assertEquals(true, B1.addAttrezzo(martello));
+		assertTrue(B1.addAttrezzo(martello));
 	}
 	
-	public void testAddAttrezzoTrapano() {
-		assertEquals(true, B1.addAttrezzo(trapano));
-	}
+//	@Test
+//	public void testAddAttrezzoTrapano() {
+//		assertTrue(B1.addAttrezzo(trapano));
+//	}
 	
+	@Test
 	public void testAddAttrezzoCacciavite() {
-		assertEquals(false, B1.addAttrezzo(cacciavite));
+		assertFalse("see Borsa.getPeso(), see Attrezzo.getPeso(), see Borsa.getPesoMax()", B1.addAttrezzo(cacciavite));
 	}
 	
 	/*Controllo che nella borsa siano presenti gli attrezzi
 	 * aggiunti prima e provo con un attrezzo non presente,
 	 * per verifica che il controllo avvenga correttamente.*/
 	
+	
+	@Test
 	public void testHasAttrezzoMartello(){
-		assertEquals(true, B1.hasAttrezzo("martello"));
+		B1.addAttrezzo(martello);
+		assertTrue(B1.hasAttrezzo("martello"));
 	}
 	
+	
+	@Test
 	public void testHasAttrezzoCric(){
-		assertEquals(false, B1.hasAttrezzo("cric"));
+		assertFalse(B1.hasAttrezzo("Cric"));
 	}
 	
 	/*Se presenti, restituisco degli attrezzi presi dalla 
 	 * borsa.*/
-	
-	public void testGetAttrezzoTrapano(){
-		assertEquals(trapano, B1.getAttrezzo("trapano"));
+	@Test
+	public void testGetAttrezzoMartello(){
+		B1.addAttrezzo(martello);
+		assertSame(martello, B1.getAttrezzo("martello"));
 	}
 	
+	
+	@Test
 	public void testGetAttrezzoAccetta(){
-		assertEquals(null, B1.getAttrezzo("accetta"));
+		assertNull(B1.getAttrezzo("accetta"));
 	}
 	
 	/*Rimuovo un oggetto dalla borsa che è presente, e provo
 	 * con uno che non ho aggiunto per verifica che il 
 	 * controllo avvenga correttamente.*/
-	
+	@Test
 	public void testRemoveAttrezzoMartello(){
-		assertEquals(martello, B1.removeAttrezzo("martello"));
+		B1.addAttrezzo(martello);
+		assertSame(martello, B1.removeAttrezzo("martello"));
 	}
 	
+	
+	@Test
 	public void testRemoveAttrezzoPinze(){
-		assertEquals(null, B1.removeAttrezzo("pinze"));
+		assertNull(B1.removeAttrezzo("pinze"));
 	}
 	
-///*non necessario*/
-////	public void testGetPeso(){
-////		
-////	}
-}
