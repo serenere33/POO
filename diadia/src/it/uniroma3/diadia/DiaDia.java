@@ -26,7 +26,7 @@ public class DiaDia {
 		"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
 		"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 		"Per conoscere le istruzioni usa il comando 'aiuto'.";
-    private static String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
+    private static String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa","borsa"};
 
     public DiaDia() {
     	this.partita = new Partita();
@@ -70,6 +70,10 @@ public class DiaDia {
 		else if(comandoDaEseguire.getNome().equals("posa"))
 			this.posa(comandoDaEseguire.getParametro());
 		
+		/*aggiunto comando borsa*/
+		else if(comandoDaEseguire.getNome().equals("borsa"))
+			System.out.println(this.partita.studente.getBorsa().toString());
+		
 		else
 			System.out.println("Comando sconosciuto");
 		
@@ -77,7 +81,7 @@ public class DiaDia {
 			System.out.println("Hai vinto!");
 			return true;
 		} else return false;
-	}   
+	}    
     
     // implementazioni dei comandi dell'utente:
 
