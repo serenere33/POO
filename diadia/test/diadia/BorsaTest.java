@@ -97,3 +97,4 @@ private Attrezzo martello, cacciavite/*, trapano*/;
 		assertNull(B1.removeAttrezzo("pinze"));
 	}
 	
+}
