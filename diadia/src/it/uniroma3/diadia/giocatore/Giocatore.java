@@ -19,7 +19,8 @@ public class Giocatore {
 	
 	
 	/**
-	 * inizializza una borsa e i CFU*/
+	 * inizializza una borsa e i CFU
+	 * secondo lui qui c'è un super costruttore implicito non dichiarato*/
 	public Giocatore() {
 		// TODO Auto-generated constructor stub
 		this.cfu=CFU_INIZIALI;
