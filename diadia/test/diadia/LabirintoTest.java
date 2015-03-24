@@ -15,8 +15,12 @@ import org.junit.Test;
  */
 public class LabirintoTest {
 
-Labirinto L1;
-	/*SetUp non necessario*/
+	Labirinto labirintoDefault;
+	
+
+	public void Setup(){
+		this.labirintoDefault=new Labirinto();
+	}
 
 	@Test
 	
@@ -24,12 +28,25 @@ Labirinto L1;
 	 * di ingresso e di uscita siano state inizializzate.*/
 	
 	public void testGetIngresso() {
-		L1 = new Labirinto();
-		assertEquals("Atrio", L1.getIngresso().getNome());
+		assertEquals("Atrio", this.labirintoDefault.getIngresso().getNome());
 	}
 	
+	@Test
 	public void testGetUscita(){
-		assertEquals("Biblioteca", L1.getUscita().getNome());
+		assertEquals("Biblioteca", this.labirintoDefault.getUscita().getNome());
 	}
 
+	@Test
+	public void testSetIngresso(){
+		Stanza ingresso=new Stanza("ingresso");
+		this.labirintoDefault.setIngresso(ingresso);
+		assertEquals(ingresso,this.labirintoDefault.getIngresso());
+	}
+	
+	@Test
+	public void testsetUscita(){
+		Stanza uscita=new Stanza("ingresso");
+		this.labirintoDefault.setUscita(uscita);
+		assertEquals(uscita,this.labirintoDefault.getUscita());
+	}
 }
