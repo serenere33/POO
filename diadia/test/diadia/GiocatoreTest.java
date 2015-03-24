@@ -36,4 +36,10 @@ public class GiocatoreTest {
 		this.TestPlayer.setBorsa(BorsaTest);
 		assertSame("errore nell'assegnare la borsa",BorsaTest,this.TestPlayer.getBorsa());
 	}
+	
+	@Test
+	public void testSetCfu_negativi(){
+		this.TestPlayer.setCfu(-1);
+		assertEquals("non funziona con i numeri negativi, dovrebbe?",-1,this.TestPlayer.getCfu());
+	}
 }
